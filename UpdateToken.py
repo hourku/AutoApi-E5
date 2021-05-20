@@ -10,6 +10,7 @@ gh_repo = os.getenv('GH_REPO')
 ms_token = os.getenv('MS_TOKEN')
 client_id = os.getenv('CLIENT_ID')
 client_secret = os.getenv('CLIENT_SECRET')
+
 Auth = r'token ' + gh_token
 geturl = r'https://api.github.com/repos/' + gh_repo + r'/actions/secrets/public-key'
 puturl = r'https://api.github.com/repos/' + gh_repo + r'/actions/secrets/MS_TOKEN'
@@ -43,8 +44,7 @@ def getmstoken():
     data = {'grant_type': 'refresh_token',
             'refresh_token': ms_token,
             'client_id': client_id,
-            'client_secret': client_secret,
-            'redirect_uri': r'https://login.microsoftonline.com/common/oauth2/nativeclient',
+            'client_secret': client_secret
             }
     for retry_ in range(4):
         html = req.post('https://login.microsoftonline.com/common/oauth2/v2.0/token', data=data, headers=headers)
@@ -89,6 +89,6 @@ def setsecret(encrypted_value):
     return putstatus
 
 
-# 调用
-encrypted_value = createsecret(getpublickey(), getmstoken())
-setsecret(encrypted_value)
+if __name__ == '__main__':
+    encrypted_value = createsecret(getpublickey(), getmstoken())
+    setsecret(encrypted_value)
