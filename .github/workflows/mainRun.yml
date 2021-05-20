@@ -26,18 +26,12 @@ jobs:
         pip install PyNaCl
     - name: run
       env:
+        #github的账号信息
+        GH_TOKEN: ${{ secrets.GH_TOKEN }} 
+        GH_REPO: ${{ github.repository }}
+        #以下是微软的账号信息（修改以下，类推复制增加）
         MS_TOKEN: ${{ secrets.MS_TOKEN }} 
         CLIENT_ID: ${{ secrets.CLIENT_ID }}
         CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-        FOCUS_UP: ${{ secrets.FOCUS_UP }}
-        FOCUS_UP_ADD: ${{ secrets.FOCUS_UP_ADD }}
-        FOCUS_UP_DE: ${{ secrets.FOCUS_UP_DE }}
-        EMAIL: ${{ secrets.EMAIL }}
-        GH_TOKEN: ${{ secrets.GH_TOKEN }} 
-        GH_REPO: ${{ github.repository }}
-        TGBOT: ${{ secrets.TGBOT }}        
-        UP_ON: ${{ secrets.UP_ON }}
-        URL_HEADER: ${{ secrets.URL_HEADER }}
-        TIME_SET: ${{ secrets.TIME_SET }}
       run: |
         python main.py
