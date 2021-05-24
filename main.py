@@ -73,7 +73,7 @@ def main(access_token):
     # 执行随机条url
     for i in range(random.randint(1, len(url_list))):
         # 随机url
-        get_url = random.randint[random.randint(0, len(url_list) - 1)]
+        get_url = url_list[random.randint(0, len(url_list) - 1)]
         try:
             if req.get(get_url, headers=headers).status_code == 200:
                 num += 1
