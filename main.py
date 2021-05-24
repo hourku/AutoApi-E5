@@ -87,6 +87,6 @@ def main(access_token):
 
 if __name__ == '__main__':
     access_token = getmstoken()
-    for _ in range(random.randint(10, 100)):
+    for _ in range(random.randint(5, 20)):
         success_num = main(access_token)
         print("执行", success_num, "条url")
