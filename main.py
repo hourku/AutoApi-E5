@@ -24,13 +24,13 @@ def getmstoken():
     for retry_ in range(4):
         html = req.post('https://login.microsoftonline.com/common/oauth2/v2.0/token', data=data, headers=headers)
         if html.status_code < 300:
-            print(r'微软密钥获取成功')
+            print('微软密钥获取成功')
             jsontxt = json.loads(html.text)
             return jsontxt['access_token']
         else:
             if retry_ == 3:
                 print(r'微软密钥获取失败')
-    return ""
+    return ''
 
 
 def main(access_token):
@@ -40,35 +40,34 @@ def main(access_token):
         'Content-Type': 'application/json'
     }
     url_list = [
-        "https://graph.microsoft.com/v1.0/me/",
-        "https://graph.microsoft.com/v1.0/users",
-        "https://graph.microsoft.com/v1.0/me/people",
-        "https://graph.microsoft.com/v1.0/groups",
-        "https://graph.microsoft.com/v1.0/me/contacts",
-        "https://graph.microsoft.com/v1.0/me/drive/root",
-        "https://graph.microsoft.com/v1.0/me/drive/root/children",
-        "https://graph.microsoft.com/v1.0/drive/root",
-        "https://graph.microsoft.com/v1.0/me/drive",
-        "https://graph.microsoft.com/v1.0/me/drive/recent",
-        "https://graph.microsoft.com/v1.0/me/drive/sharedWithMe",
-        "https://graph.microsoft.com/v1.0/me/calendars",
-        "https://graph.microsoft.com/v1.0/me/events",
-        "https://graph.microsoft.com/v1.0/sites/root",
-        "https://graph.microsoft.com/v1.0/sites/root/sites",
-        "https://graph.microsoft.com/v1.0/sites/root/drives",
-        "https://graph.microsoft.com/v1.0/sites/root/columns",
-        "https://graph.microsoft.com/v1.0/me/onenote/notebooks",
-        "https://graph.microsoft.com/v1.0/me/onenote/sections",
-        "https://graph.microsoft.com/v1.0/me/onenote/pages",
-        "https://graph.microsoft.com/v1.0/me/messages",
-        "https://graph.microsoft.com/v1.0/me/mailFolders",
-        "https://graph.microsoft.com/v1.0/me/outlook/masterCategories",
-        "https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/delta",
-        "https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules",
-        "https://graph.microsoft.com/v1.0/me/messages?$filter=importance eq 'high'",
-        "https://graph.microsoft.com/v1.0/me/messages?$search='hello world'",
-        "https://graph.microsoft.com/beta/me/messages?$select=internetMessageHeaders&$top",
-        "https://api.powerbi.com/v1.0/myorg/apps",
+        'https://graph.microsoft.com/v1.0/me/',
+        'https://graph.microsoft.com/v1.0/users',
+        'https://graph.microsoft.com/v1.0/me/people',
+        'https://graph.microsoft.com/v1.0/groups',
+        'https://graph.microsoft.com/v1.0/me/contacts',
+        'https://graph.microsoft.com/v1.0/me/drive/root',
+        'https://graph.microsoft.com/v1.0/me/drive/root/children',
+        'https://graph.microsoft.com/v1.0/drive/root',
+        'https://graph.microsoft.com/v1.0/me/drive',
+        'https://graph.microsoft.com/v1.0/me/drive/recent',
+        'https://graph.microsoft.com/v1.0/me/drive/sharedWithMe',
+        'https://graph.microsoft.com/v1.0/me/calendars',
+        'https://graph.microsoft.com/v1.0/me/events',
+        'https://graph.microsoft.com/v1.0/sites/root',
+        'https://graph.microsoft.com/v1.0/sites/root/sites',
+        'https://graph.microsoft.com/v1.0/sites/root/drives',
+        'https://graph.microsoft.com/v1.0/sites/root/columns',
+        'https://graph.microsoft.com/v1.0/me/onenote/notebooks',
+        'https://graph.microsoft.com/v1.0/me/onenote/sections',
+        'https://graph.microsoft.com/v1.0/me/onenote/pages',
+        'https://graph.microsoft.com/v1.0/me/messages',
+        'https://graph.microsoft.com/v1.0/me/mailFolders',
+        'https://graph.microsoft.com/v1.0/me/outlook/masterCategories',
+        'https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/delta',
+        'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules',
+        'https://graph.microsoft.com/v1.0/me/messages?$filter=importance eq "high"',
+        'https://graph.microsoft.com/v1.0/me/messages?$search="hello world"',
+        'https://graph.microsoft.com/beta/me/messages?$select=internetMessageHeaders&$top',
     ]
     # 执行随机条url
     for i in range(random.randint(1, len(url_list))):
@@ -87,6 +86,6 @@ def main(access_token):
 
 if __name__ == '__main__':
     access_token = getmstoken()
-    for _ in range(random.randint(5, 20)):
+    for _ in range(random.randint(10, 100)):
         success_num = main(access_token)
-        print("执行", success_num, "条url")
+        print('执行', success_num, '条url')
