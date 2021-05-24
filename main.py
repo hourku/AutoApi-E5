@@ -65,7 +65,7 @@ def main(access_token):
         'https://graph.microsoft.com/v1.0/me/outlook/masterCategories',
         'https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/delta',
         'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules',
-        'https://graph.microsoft.com/v1.0/me/messages?$filter=importance eq "high"',
+        'https://graph.microsoft.com/v1.0/me/messages?$filter=importance eq \'high\'',
         'https://graph.microsoft.com/v1.0/me/messages?$search="hello world"',
         'https://graph.microsoft.com/beta/me/messages?$select=internetMessageHeaders&$top',
     ]
